@@ -1,32 +1,31 @@
 <?php
+$servername = "localhost";
+$username = "noxiveco_enrshit";
+$password = "dQ/X92x^F4H;Si<@";
+$dbname = "noxiveco_enershit";
 
-define("root", "");
-include (root . "init.php");
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
+function update() {
+    $time = date("his");
+    $sql = "INSERT INTO energyTest (human)
+    VALUES (time)";
+
+    if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+for ($i=0; $i < 59; $i++) {
+  update();
+  sleep(1);
+}
+
+$conn->close();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Add Record Form</title>
-</head>
-<body>
-<form action="insert.php" method="post">
-    <p>
-        <label for="firstName">First Name:</label>
-        <input type="text" name="first_name" id="firstName">
-    </p>
-    <p>
-        <label for="lastName">Last Name:</label>
-        <input type="text" name="last_name" id="lastName">
-    </p>
-    <p>
-        <label for="emailAddress">Email Address:</label>
-        <input type="text" name="email" id="emailAddress">
-    </p>
-    <input type="submit" value="Submit">
-</form>
-hello hello felix edit
-</body>
-</html>
