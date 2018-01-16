@@ -1,3 +1,10 @@
+<?php
+
+define("root", "");
+include (root . "init.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
