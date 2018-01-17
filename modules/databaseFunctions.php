@@ -68,4 +68,14 @@ function sqlDelete($table, $criteria) {
 	}
 }
 
+function sqlUpdate($table, $criteria, $column, $value) {
+	$query = "UPDATE `" . $table . "` SET `" . $column . "` = '" . $value . "' WHERE " . $criteria;
+
+	global $conn;
+	// if the update fails, show error message
+	if (!($conn->query($query))) {
+		die("SQL UPDATE Error: " . $query . "<br>" . $conn->error);
+	}
+}
+
 ?>
