@@ -9,19 +9,22 @@ function databaseConnect() {
 	// Create connection
 	global $conn;
 	$conn = new mysqli($servername, $username, $password, $dbname);
-	
+
 	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 }
 
-function sqlSelect() {
+function sqlSelect($table,$criteria,$rows) {
 	global $conn;
-	if ($conn->query($sql) === TRUE) {
-		echo "New record created successfully";
+	$sql = "SELECT $table FROM $rows WHERE $criteria";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		return $result;
 	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
+	    echo "0 results";
 	}
 }
 
