@@ -118,10 +118,11 @@ function decodeAjaxParam($param) {
 		var bg = "#00000000";
 		var circle = ["blue", "red", "yellow", "green"];
 
-		if (module == "energy") {
+		var exceptions = ['energy','itemList'];
+		if (exceptions.includes(module)) {
 			// do nothing
 		} else {
-
+		
 		// show loading circle
 		document.getElementById(id).innerHTML =
 		'<div style="background: ' + bg + '; height: 100%; overflow: hidden;" class="center">' +

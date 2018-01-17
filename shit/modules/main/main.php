@@ -21,8 +21,6 @@ if (!$resourceAlloc) {
 
 
 
-
-
 <table>
 	<div id="energies">
 	</div>
@@ -37,6 +35,13 @@ if (!$resourceAlloc) {
 <button onclick="submitAllocation()" id="submit" style="display: none;">DONE</button>
 <div id="confirmMessage"></div>
 
+<ul id="itemList">
+</ul>
+
+
+<!-- ajax script is called in headers to be before the actual ajax use -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 <script type="text/javascript">
 	function doneAllocation() {
 		document.getElementById("submit").style.display = "block";
@@ -59,13 +64,14 @@ if (!$resourceAlloc) {
 		loadP("ghost","submitAllocation", human, attack, power, intel, build);
 	}
 
-  //loop that refreshes energy display
+  //loop that refreshes energy display and items list
   var t=setInterval(updateEnergy,1000);
   function updateEnergy(){
   	loadP("energies","energy");
+		loadP("itemList","itemList");
   }
-  // To stop the loop
-  //clearInterval(t);
+
+
 
 </script>
 
