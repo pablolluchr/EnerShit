@@ -11,7 +11,5 @@ function jslog($log) {
 	echo "<script>console.log('" . $log . "');</script>";
 }
 
-get("ajaxFunctions");
-get("databaseFunctions");
 
 ?>
