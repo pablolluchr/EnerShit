@@ -15,8 +15,8 @@ if ($conn->connect_error) {
 function update() {
     $time = date("his");
     $sql = "INSERT INTO energyTest (human)
-    VALUES (time)";
-
+    VALUES ('$time')";
+    global $conn;
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
     } else {
