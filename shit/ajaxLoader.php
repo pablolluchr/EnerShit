@@ -9,7 +9,11 @@ if (isset($_GET["m"])) {
 	databaseConnect();
 	
 	$module = $_GET["m"];
-	$param = urldecode($_GET["p"]);
+	if (isset($_GET["p"])) {
+		$param = urldecode($_GET["p"]);
+	} else {
+		$param = "";
+	}
 
 	if ($param == "") {
 		get($module);
