@@ -20,7 +20,10 @@ function sqlSelect($table,$rows,$criteria,$orderby) {
 	global $conn;
 	$sql = "SELECT $rows FROM $table WHERE $criteria ORDER BY $orderby";
 	$result = $conn->query($sql);
-	$rows = $result->fetch_assoc();
+	$rows = array();
+	while ($row = $result->fetch_assoc()) {
+			 $rows[] = $row;
+	 }
 
 	if (!$result) { // if result failed
 		die("SQL SELECT Error: " . $sql . "<br>" . $conn->connect_error);
