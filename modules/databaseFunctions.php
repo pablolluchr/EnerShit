@@ -20,12 +20,13 @@ function sqlSelect($table,$rows,$criteria) {
 	global $conn;
 	$sql = "SELECT $rows FROM $table WHERE $criteria";
 	$result = $conn->query($sql);
+	$rows = $result->fetch_assoc();
 
-	if ($result->num_rows > 0) { //if the result is not empty
-		return $result;
-	} else {
-	    echo "0 results";
+	if (!result) { // if result failed
+		echo "fail";
+		die("Select failed: " . $conn->connect_error);
 	}
+	   return $rows;
 }
 
 function sqlInsert() {
