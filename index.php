@@ -5,6 +5,8 @@ include (root . "init.php");
 databaseConnect();
 sqlInsert("queryTest","5","6");
 
+$query = sqlSelect("queryTest","colA","colA=6");
+
 // $servername = "localhost";
 // $username = "noxiveco_enrshit";
 // $password = "dQ/X92x^F4H;Si<@";
