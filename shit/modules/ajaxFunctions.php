@@ -1,5 +1,5 @@
 <?
-define('splitCode', 's'); //used as an escape code for splitting parameters 
+define('splitCode', 's'); //used as an escape code for splitting parameters
 
 function decodeAjaxParam($param) {
 	// used to decode the list pf parameters produced by ajaxParam() in javascript
@@ -13,7 +13,7 @@ function decodeAjaxParam($param) {
 
 	$out = array();
 	$curParam = "";
-	for ($i=0; $i < strlen($param); $i++) { 
+	for ($i=0; $i < strlen($param); $i++) {
 		$curChar = substr($param, $i, 1);
 		$curParam = $curParam . $curChar;
 
@@ -64,7 +64,7 @@ function decodeAjaxParam($param) {
 			if (string.charAt(i) == delimeter) {
 				out += string.substring(lastDel, i);
 				out += delimeter;
-				lastDel = i; 
+				lastDel = i;
 			}
 		}
 		out += string.substring(lastDel, string.length);
@@ -118,12 +118,12 @@ function decodeAjaxParam($param) {
 		var bg = "#00000000";
 		var circle = ["blue", "red", "yellow", "green"];
 
-		if (module == "timestampCheck") {
+		if (module == "energy") {
 			// do nothing
 		} else {
 
 		// show loading circle
-		document.getElementById(id).innerHTML = 
+		document.getElementById(id).innerHTML =
 		'<div style="background: ' + bg + '; height: 100%; overflow: hidden;" class="center">' +
 		'<br>' +
 		'<div class="preloader-wrapper big active">' +
@@ -180,5 +180,5 @@ function decodeAjaxParam($param) {
 			$("#" + id).load("ajaxLoader.php?m=" + module);
 		}
 	}
-	
+
 </script>
