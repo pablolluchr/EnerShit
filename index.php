@@ -7,6 +7,8 @@ get("databaseFunctions");
 
 databaseConnect();
 
+$query = sqlSelect("queryTest","colA","colA=6");
+
 // $servername = "localhost";
 // $username = "noxiveco_enrshit";
 // $password = "dQ/X92x^F4H;Si<@";
