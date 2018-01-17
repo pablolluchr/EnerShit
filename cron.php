@@ -9,7 +9,7 @@ $dbname = "noxiveco_enershit";
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Da connection failed: " . $conn->connect_error);
 }
 
 function update() {
