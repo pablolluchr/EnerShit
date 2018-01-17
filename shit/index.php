@@ -19,6 +19,8 @@ if (!$resourceAlloc) {
 	$buildAlloc = $resourceAlloc["building"];
 }
 
+
+
 ?>
 
 
