@@ -2,7 +2,7 @@
 
 databaseConnect();
 $rows = 'human, attack, power, intelligence, building';
-$query = sqlSelect('energy',$rows,"username='test'");
+$query = sqlSelect('energy',$rows,"username='test'","`username`");
 
 ?>
 <td><?e($query['human'])?></td>
