@@ -26,7 +26,7 @@ databaseConnect();
 
 <table>
 	<tr id="energies">
-		
+
 	</tr>
 	<tr>
 		<td><input oninput="doneAllocation()" type="text" id="human"></td>
@@ -37,6 +37,10 @@ databaseConnect();
 	</tr>
 </table>
 <button id="submit" style="display: none;">DONE</button>
+
+<table>
+  
+</table>
 
 <script type="text/javascript">
 	function doneAllocation() {
