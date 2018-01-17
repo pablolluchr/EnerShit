@@ -1,6 +1,9 @@
 <?php
+define("root", "");
+include (root . "init.php");
 
-
+databaseConnect();
+sqlInsert("queryTest","5","6");
 
 // $servername = "localhost";
 // $username = "noxiveco_enrshit";
