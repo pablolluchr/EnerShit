@@ -9,6 +9,25 @@ if (isset($_GET["m"])) {
 	databaseConnect();
 	
 	$module = $_GET["m"];
+
+	// verify login for pages that are protected
+	$username = urldecode($_GET["user"]);
+	$password = urldecode($_GET["pass"]);
+
+	$excludeModules = array("login","signup","signupAction");
+
+	if (($username == "null" || $password == "null") && !in_array($module, $excludeModules)) {
+		get("login");
+		return;
+	}
+
+
+	if (!verifyLogin($username, $password) && !in_array($module, $excludeModules)) {
+		// die("wrong login details while loading module: " . $module . ". user: " . $username);
+		get("login","error");
+		return;
+	}
+
 	if (isset($_GET["p"])) {
 		$param = urldecode($_GET["p"]);
 	} else {

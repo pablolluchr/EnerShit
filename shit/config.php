@@ -15,6 +15,8 @@ function jslog($log) {
 }
 
 
+get("jsFunctions");
+get("loginFunctions");
 get("ajaxFunctions");
 get("databaseFunctions");
 

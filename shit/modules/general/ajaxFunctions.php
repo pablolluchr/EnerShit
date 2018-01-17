@@ -173,12 +173,18 @@ function decodeAjaxParam($param) {
 			parameters.push(arguments[i]);
 		}
 
+		var username = encodeURIComponent(getUsername());
+		var password = encodeURIComponent(getPassword());
+
 		// load module with parameters if there are any
+		var url;
 		if (arguments.length > 2) {
-			$("#" + id).load("ajaxLoader.php?m=" + module + "&p=" + ajaxParamArr("~", parameters));
+			url = "ajaxLoader.php?m=" + module + "&p=" + ajaxParamArr("~", parameters) + "&user=" + username + "&pass=" + password;
 		} else {
-			$("#" + id).load("ajaxLoader.php?m=" + module);
+			url = "ajaxLoader.php?m=" + module + "&user=" + username + "&pass=" + password;
 		}
+		console.log("loading: " + url);
+		$("#" + id).load(url);
 	}
 
 </script>
