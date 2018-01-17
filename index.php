@@ -2,8 +2,10 @@
 define("root", "");
 include (root . "init.php");
 
+get("ajaxFunctions");
+get("databaseFunctions");
+
 databaseConnect();
-sqlInsert("queryTest","5","6");
 
 // $servername = "localhost";
 // $username = "noxiveco_enrshit";

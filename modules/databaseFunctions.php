@@ -57,4 +57,14 @@ function sqlInsert() {
 	}
 }
 
+function sqlDelete($table, $criteria) {
+	$query = "DELETE FROM `" . $table . "` WHERE " . $criteria;
+
+	global $conn;
+	// if the delete fails, show error message
+	if (!($conn->query($query))) {
+		die("SQL DELETE Error: " . $query . "<br>" . $conn->error);
+	}
+}
+
 ?>
