@@ -16,18 +16,21 @@ function databaseConnect() {
 	}
 }
 
+<<<<<<< HEAD
 function sqlSelect($table,$rows,$criteria) {
 
+=======
+function sqlSelect($table,$rows,$criteria,$orderby) {
+>>>>>>> 038ca9a0f58a46d3191b631174254c55859dc7fa
 	global $conn;
-	$sql = "SELECT $rows FROM $table WHERE $criteria";
+	$sql = "SELECT $rows FROM $table WHERE $criteria ORDER BY $orderby";
 	$result = $conn->query($sql);
 	$rows = $result->fetch_assoc();
 
-	if (!result) { // if result failed
-		echo "fail";
-		die("Select failed: " . $conn->connect_error);
+	if (!$result) { // if result failed
+		die("SQL SELECT Error: " . $sql . "<br>" . $conn->connect_error);
 	}
-	   return $rows;
+	return $rows;
 }
 
 function sqlInsert() {
@@ -36,7 +39,7 @@ function sqlInsert() {
 	$query = "INSERT INTO `" . $table . "` VALUES (";
 	$i = 0;
 	// from args 1 to the end of array
-	while ($args[++$i]) {
+	while (++$i < count($args)) {
 		// if NULL, simply add NULL without quotes
 		if ($args[$i] == "NULL") {
 			$query = $query . "NULL";
@@ -45,7 +48,7 @@ function sqlInsert() {
 			$query = $query . "'" . $args[$i] . "'";
 		}
 		// if a next arg exists, then add a comma
-		if ($args[$i + 1]) {
+		if ($i < count($args) - 1) {
 			$query = $query . ", ";
 		}
 	}
