@@ -28,7 +28,6 @@ databaseConnect();
 
 <table>
 	<tr id="energies">
-
 	</tr>
 	<tr>
 		<td><input oninput="doneAllocation()" type="number" value="0" id="human"></td>
@@ -41,17 +40,11 @@ databaseConnect();
 <button onclick="submitAllocation()" id="submit" style="display: none;">DONE</button>
 <div id="confirmMessage"></div>
 
-<table>
-  
-</table>
 
 <script type="text/javascript">
 	function doneAllocation() {
 		document.getElementById("submit").style.display = "block";
 	}
-<<<<<<< HEAD
-</script>
-=======
 
 	function submitAllocation() {
 		var human = document.getElementById("human").value;
@@ -61,7 +54,15 @@ databaseConnect();
 		var build = document.getElementById("build").value;
 		loadP("ghost","submitAllocation", human, attack, power, intel, build);
 	}
+
+  //loop that refreshes energy display
+  var t=setInterval(updateEnergy,1000);
+  function updateEnergy(){
+    loadP("energies","energy");
+  }
+  // To stop the loop
+  //clearInterval(t);
+
 </script>
 
 <div id="ghost"></div>
->>>>>>> 94c7291a03590d9e945efcdb4a3fef76e8edf9c3

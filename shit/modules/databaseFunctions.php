@@ -17,6 +17,7 @@ function databaseConnect() {
 }
 
 function sqlSelect($table,$rows,$criteria) {
+
 	global $conn;
 	$sql = "SELECT $rows FROM $table WHERE $criteria";
 	$result = $conn->query($sql);
