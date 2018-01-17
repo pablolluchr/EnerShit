@@ -15,7 +15,7 @@ function databaseConnect() {
 	}
 }
 
-function sqlSelect() {
+function sqlSelect($table, $criteria) {
 	global $conn;
 	if ($conn->query($sql) === TRUE) {
 		echo "New record created successfully";
