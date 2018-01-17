@@ -21,7 +21,7 @@ function sqlSelect($table,$criteria,$rows) {
 	$sql = "SELECT $table FROM $rows WHERE $criteria";
 	$result = $conn->query($sql);
 
-	if ($result->num_rows > 0) {
+	if ($result->num_rows > 0) { //if the result is not empty
 		return $result;
 	} else {
 	    echo "0 results";
