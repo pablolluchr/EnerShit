@@ -21,7 +21,6 @@ if (isset($_GET["m"])) {
 		return;
 	}
 
-
 	if (!verifyLogin($username, $password) && !in_array($module, $excludeModules)) {
 		// die("wrong login details while loading module: " . $module . ". user: " . $username);
 		get("login","error");

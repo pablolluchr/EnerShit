@@ -1,8 +1,7 @@
 <?
 
 function verifyLogin($username, $password) {
-	$passwordHash = sqlSelect("users","*","`username` = '" . $username . "'", "`username`")["password"];
-	echo $passwordHash;
+	$passwordHash = sqlSelect("users","*","`username` = '" . $username . "'", "`username`")[0]["password"];
 	return password_verify($password, $passwordHash);
 }
 

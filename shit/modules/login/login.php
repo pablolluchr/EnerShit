@@ -18,6 +18,7 @@ Password:
 <br>
 <button onclick="login()">Login</button>
 <br>
+<br>
 <a onclick="loadP('main', 'signup')">signup</a>
 
 <script type="text/javascript">

@@ -1,4 +1,16 @@
-<div id="error"></div>
+<?
+if (count($a) == 2) {
+	$error = decodeAjaxParam($a[1])[0];
+	if ($error = "error") {
+		$error = "Username already exists";
+	} else {
+		$error = "";
+	}
+}
+
+?>
+
+<div id="error"><?e($error)?></div>
 <br>
 Username:
 <input type="text" id="username">
@@ -10,6 +22,9 @@ Password:
 <input type="password" id="password">
 <br>
 <button onclick="signup()">Signup</button>
+<br>
+<br>
+<a onclick="loadP('main','login')">back to login</a>
 
 <script type="text/javascript">
 	function signup() {

@@ -1,6 +1,6 @@
 <?
 
-$resourceAlloc = sqlSelect("resourceAllocation","*","`username` = 'test'","`username`");
+$resourceAlloc = sqlSelect("resourceAllocation","*","`username` = 'test'","`username`")[0];
 if (!$resourceAlloc) {
 	$humanAlloc = "0";
 	$powerAlloc = "0";
@@ -68,7 +68,7 @@ if (!$resourceAlloc) {
   var t=setInterval(updateEnergy,1000);
   function updateEnergy(){
   	loadP("energies","energy");
-		loadP("itemList","itemList");
+  	loadP("itemList","itemList");
   }
 
 

@@ -6,7 +6,7 @@ $power = $params[2];
 $intel = $params[3];
 $build = $params[4];
 
-if (!sqlSelect("resourceAllocation","*","`username` = 'test'","`username`")) {
+if (!sqlSelect("resourceAllocation","*","`username` = 'test'","`username`")[0]) {
 	sqlInsert("resourceAllocation","test", $human, $attack, $power, $intel, $build);
 } else {
 	sqlUpdate("resourceAllocation","`username` = 'test'","human",$human);
