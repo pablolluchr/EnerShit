@@ -35,8 +35,8 @@ if (!$resourceAlloc) {
 <button onclick="submitAllocation()" id="submit" style="display: none;">DONE</button>
 <div id="confirmMessage"></div>
 
-<ul id="itemList">
-</ul>
+<div id="itemList">
+</div>
 
 
 <!-- ajax script is called in headers to be before the actual ajax use -->
