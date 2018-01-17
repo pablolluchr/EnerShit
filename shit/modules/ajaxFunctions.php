@@ -117,13 +117,8 @@ function decodeAjaxParam($param) {
 
 		var bg = "#00000000";
 		var circle = ["blue", "red", "yellow", "green"];
-		if (module == "login" || module == "signup" || module == "home") {
-			bg = "linear-gradient(to bottom right, <?e(bannerColour1)?>, <?e(bannerColour2)?>)";
-		}
 
-		if (module == "peopleSearch") {
-			document.getElementById(id).innerHTML = "<div class='center'><em class='grey-text'>Loading...</em></div><br>";
-		} else if (module == "timestampCheck") {
+		if (module == "timestampCheck") {
 			// do nothing
 		} else {
 
