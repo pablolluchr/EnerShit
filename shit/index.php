@@ -28,8 +28,8 @@ if (!$resourceAlloc) {
 
 
 <table>
-	<tr id="energies">
-	</tr>
+	<div id="energies">
+	</div>
 	<tr>
 		<td><input oninput="doneAllocation()" type="number" value="<?e($humanAlloc)?>" id="human"></td>
 		<td><input oninput="doneAllocation()" type="number" value="<?e($attackAlloc)?>" id="attack"></td>
@@ -66,7 +66,7 @@ if (!$resourceAlloc) {
   //loop that refreshes energy display
   var t=setInterval(updateEnergy,1000);
   function updateEnergy(){
-    loadP("energies","energy");
+  	loadP("energies","energy");
   }
   // To stop the loop
   //clearInterval(t);
