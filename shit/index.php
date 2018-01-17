@@ -29,7 +29,7 @@ if (!$resourceAlloc) {
 
 <table>
 	<tr id="energies">
-		
+
 	</tr>
 	<tr>
 		<td><input oninput="doneAllocation()" type="number" value="<?e($humanAlloc)?>" id="human"></td>
@@ -42,10 +42,17 @@ if (!$resourceAlloc) {
 <button onclick="submitAllocation()" id="submit" style="display: none;">DONE</button>
 <div id="confirmMessage"></div>
 
+<table>
+  
+</table>
+
 <script type="text/javascript">
 	function doneAllocation() {
 		document.getElementById("submit").style.display = "block";
 	}
+<<<<<<< HEAD
+</script>
+=======
 
 	function submitAllocation() {
 		document.getElementById("submit").innerHTML = "submitting...";
@@ -66,3 +73,4 @@ if (!$resourceAlloc) {
 </script>
 
 <div id="ghost"></div>
+>>>>>>> 94c7291a03590d9e945efcdb4a3fef76e8edf9c3
