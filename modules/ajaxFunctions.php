@@ -178,9 +178,6 @@ function decodeAjaxParam($param) {
 			parameters.push(arguments[i]);
 		}
 
-		var username = encodeURIComponent(localStorage.getItem("owmeUsername"));
-		var password = encodeURIComponent(localStorage.getItem("owmePassword"));
-
 		// load module with parameters if there are any
 		if (arguments.length > 2) {
 			$("#" + id).load("ajaxLoader.php?m=" + module + "&p=" + ajaxParamArr("~", parameters) + "&user=" + username + "&pass=" + password);
