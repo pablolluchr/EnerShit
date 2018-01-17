@@ -2,12 +2,9 @@
 define("root", "");
 include (root . "init.php");
 
-get("ajaxFunctions");
-get("databaseFunctions");
-
 databaseConnect();
 
-$query = sqlSelect("queryTest","colA","colA=6");
+$query = sqlSelect("queryTest","colA","colA=5");
 
 // $servername = "localhost";
 // $username = "noxiveco_enrshit";
@@ -24,3 +21,12 @@ $query = sqlSelect("queryTest","colA","colA=6");
 
 
 ?>
+
+
+<!-- ajax script is called in headers to be before the actual ajax use -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div id="test"></div>
+<script type="text/javascript">
+  loadP("test","test","hello world");
+</script>

@@ -183,9 +183,9 @@ function decodeAjaxParam($param) {
 
 		// load module with parameters if there are any
 		if (arguments.length > 2) {
-			$("#" + id).load("ajaxLoaderParam.php?m=" + module + "&p=" + ajaxParamArr("~", parameters) + "&user=" + username + "&pass=" + password);
+			$("#" + id).load("ajaxLoader.php?m=" + module + "&p=" + ajaxParamArr("~", parameters) + "&user=" + username + "&pass=" + password);
 		} else {
-			$("#" + id).load("ajaxLoaderParam.php?m=" + module + "&user=" + username + "&pass=" + password);
+			$("#" + id).load("ajaxLoader.php?m=" + module + "&user=" + username + "&pass=" + password);
 		}
 	}
 	
