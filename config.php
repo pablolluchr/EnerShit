@@ -12,5 +12,6 @@ function jslog($log) {
 }
 
 get("ajaxFunctions");
+get("databaseFunctions");
 
 ?>
