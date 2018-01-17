@@ -18,15 +18,17 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-function update(){
-  $sql = "INSERT INTO energy (human)
-  VALUES (123)";
+$sql = "INSERT INTO energy (human)
+VALUES (555)";
 
-  if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
-  } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+/*
+function update(){
+
 }
 
 for ($i=0; $i < 59; $i++) {
@@ -34,7 +36,7 @@ for ($i=0; $i < 59; $i++) {
   sleep(1);
 }
 
-
+*/
 
 
 
