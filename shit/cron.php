@@ -2,9 +2,9 @@
 
 function databaseConnect() {
 	$servername = "localhost";
-	$username = "noxiveco_enrshit";
+	$username = "noxiveco_swind";
 	$password = "dQ/X92x^F4H;Si<@";
-	$dbname = "noxiveco_enershit";
+	$dbname = "noxiveco_second_wind";
 
 	// Create connection
 	global $conn;

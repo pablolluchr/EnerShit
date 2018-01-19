@@ -29,4 +29,9 @@ function verifyLogin($username, $password) {
 		localStorage.removeItem("enershitUsername");
 		localStorage.removeItem("enershitPassword");
 	}
+
+	function logout() {
+		clearLoginDetails();
+		loadP("main","login");
+	}
 </script>

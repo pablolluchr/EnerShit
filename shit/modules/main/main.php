@@ -75,4 +75,6 @@ if (!$resourceAlloc) {
 
 </script>
 
+<a onclick="logout()">logout</a>
+
 <div id="ghost"></div>

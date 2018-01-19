@@ -9,17 +9,23 @@ echo $error;
 echo "<script>clearLoginDetails();</script>";
 
 ?>
-<br>
-Username:
-<input type="text" id="username">
-<br>
-Password:
-<input type="password" id="password">
-<br>
-<button onclick="login()">Login</button>
-<br>
-<br>
-<a onclick="loadP('main', 'signup')">signup</a>
+
+<div class="loginParent">
+	<div class="loginChild menuSolid">
+		<div class="loginUsername">
+			Username:<br>
+			<input type="text" id="username">
+		</div>
+		<br>
+		Password:<br>
+		<input type="password" id="password">
+		<br>
+		<button onclick="login()">Login</button>
+		<br>
+		<br>
+		<a onclick="loadP('main', 'signup')">signup</a>
+	</div>
+</div>
 
 <script type="text/javascript">
 	function login() {
