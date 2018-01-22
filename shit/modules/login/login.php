@@ -5,33 +5,48 @@ if (count($a) == 1) {
 	$error = "your login details are wrong";
 }
 
-echo $error;
 echo "<script>clearLoginDetails();</script>";
 
 ?>
 
 <div class="loginParent">
-	<div class="loginChild menuSolid">
-		<div class="loginUsername">
-			Username:<br>
-			<input type="text" id="username">
-		</div>
-		<br>
-		Password:<br>
-		<input type="password" id="password">
-		<br>
-		<button onclick="login()">Login</button>
-		<br>
-		<br>
-		<a onclick="loadP('main', 'signup')">signup</a>
-	</div>
+	<section class="loginChild menuSolid loginContentParent textWhite" id="loginContent">
+		<cardhead><h3>Login</h3></cardhead>
+		<error class="loginContent" id="error"><?e($error)?></error>
+		<user1 class="loginContent">Username:</user1>
+		<user2 class="loginContent">
+			<input class="loginInput textWhite" type="text" id="username">
+		</user2>
+		<pass1 class="loginContent">Password:</pass1>
+		<pass2 class="loginContent">
+			<input class="loginInput textWhite" type="password" id="password">
+		</pass2>
+		<signup class="loginContent">
+			<button class="loginButton textWhite" onclick="document.location.href = '?p=signup'">Signup</button>
+		</signup>
+		<login class="loginContent">
+			<button id="login" class="loginButton textWhite" onclick="login()">Login</button>
+		</login>
+	</section>
 </div>
 
 <script type="text/javascript">
+
 	function login() {
 		saveUsername(element("username").value);
 		savePassword(element("password").value);
-		loadP("main","main");
+		document.location.href = "?";
 	}
 
+	document.getElementById("username").focus();
+
+	function enterLogin(id) {
+		$("#" + id).keyup(function(event) {
+			if (event.keyCode === 13) {
+				$("#login").click();
+			}
+		});
+	}
+	enterLogin("username");
+	enterLogin("password");
 </script>

@@ -118,7 +118,7 @@ function decodeAjaxParam($param) {
 		var bg = "#00000000";
 		var circle = ["blue", "red", "yellow", "green"];
 
-		var exceptions = ['energy','itemList'];
+		var exceptions = ['energy','itemList','checkUserExists'];
 		if (exceptions.includes(module)) {
 			// do nothing
 		} else {

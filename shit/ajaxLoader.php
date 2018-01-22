@@ -14,7 +14,7 @@ if (isset($_GET["m"])) {
 	$username = urldecode($_GET["user"]);
 	$password = urldecode($_GET["pass"]);
 
-	$excludeModules = array("login","signup","signupAction");
+	$excludeModules = array("login","signup","signupAction", "checkUserExists");
 
 	if (($username == "null" || $password == "null") && !in_array($module, $excludeModules)) {
 		get("login");
