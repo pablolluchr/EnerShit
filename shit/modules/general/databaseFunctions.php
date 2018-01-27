@@ -16,9 +16,9 @@ function databaseConnect() {
 	}
 }
 
-function sqlSelect($table,$rows,$criteria,$orderby) {
+function sqlSelect($table,$cols,$criteria,$orderby) {
 	global $conn;
-	$sql = "SELECT $rows FROM $table WHERE $criteria ORDER BY $orderby";
+	$sql = "SELECT $cols FROM $table WHERE $criteria ORDER BY $orderby";
 	$result = $conn->query($sql);
 	$rows = array();
 	while ($row = $result->fetch_assoc()) {
@@ -29,6 +29,10 @@ function sqlSelect($table,$rows,$criteria,$orderby) {
 		die("SQL SELECT Error: " . $sql . "<br>" . $conn->connect_error);
 	}
 	return $rows;
+}
+
+function sqlSelectSingle($table, $criteria, $col) {
+	return sqlSelect($table, $col, $criteria, $col)[0][$col];
 }
 
 function sqlInsert() {

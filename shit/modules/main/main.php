@@ -15,11 +15,15 @@ if (!$resourceAlloc) {
 	$buildAlloc = $resourceAlloc["building"];
 }
 
-
-
 ?>
 
+<div id="test"></div>
 
+<script type="text/javascript">
+	for (var i = 0; i < 100; i++) {
+		loadV("test", "email", "pablo");
+	}
+</script>
 
 <table>
 	<div id="energies">
@@ -68,7 +72,7 @@ if (!$resourceAlloc) {
   var t=setInterval(updateEnergy,1000);
   function updateEnergy(){
   	loadP("energies","energy");
-  	loadP("itemList","itemList");
+  	// loadP("itemList","itemList");
   }
 
 
