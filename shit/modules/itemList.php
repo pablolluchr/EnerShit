@@ -1,7 +1,7 @@
 <?php
 
 databaseConnect();
-$result = sqlSelect('usersItems','item,amount',"username='test'",'item')[0];
+$result = sqlSelect('usersItems','item,amount',"username='test'",'item');
 
 //prints items
 foreach ($result as &$r) {

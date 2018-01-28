@@ -1,4 +1,3 @@
-
 <?
 
 $resourceAlloc = sqlSelect("resourceAllocation","*","`username` = 'test'","`username`")[0];
@@ -15,12 +14,7 @@ if (!$resourceAlloc) {
 	$intelAlloc = $resourceAlloc["intelligence"];
 	$buildAlloc = $resourceAlloc["building"];
 }
-
-
-
 ?>
-
-
 
 <html>
 <head>
@@ -99,8 +93,10 @@ body{
     <button onclick="submitAllocation()" id="submit" style="display: none;">DONE</button>
     <div id="confirmMessage"></div>
 
-    <div id="itemList">
-    </div>
+    <div id="itemList"></div>
+    <items></items>
+    <div id="testItems"></div>
+    <button onclick="combineItems()">Combine items</button>
   </div>
   <div class="item4">analytics menu</div>
   <div class="item5">
@@ -138,11 +134,59 @@ body{
 		loadP("ghost","submitAllocation", human, attack, power, intel, build);
 	}
 
+
   //loop that refreshes energy display and items list
   var t=setInterval(updateEnergy,1000);
   function updateEnergy(){
   	loadP("energies","energy");
-  	loadP("itemList","itemList");
+
+
+  }
+  //code to load items
+  var items = null;
+  function refreshItems(){
+    <?php
+    databaseConnect();
+    $result = sqlSelect('usersItems','item,amount',"username='test'",'item');
+    ?>
+    //store items in var items
+    items = <?php echo json_encode($result, JSON_PRETTY_PRINT) ?>;
+  }
+  refreshItems();
+
+  //vars that stores the elements to combine
+  var el1, el2;
+  var nextEl = "el1"; //stores the last el updated
+
+  function addToCombine(id) { //LIFO using el1 and el2 to store combination of elemnt
+    if(nextEl=="el1"){
+      el1=id;
+      nextEl="el2";
+    }
+    else if(nextEl=="el2"){
+      el2=id;
+      nextEl="el1";
+    }
+    //displays the two elements that will be combined
+    document.getElementById("testItems").innerHTML = el1.concat(" will be combined with ").concat(el2);
+  }
+
+  //creates a button for each item so when they are clicked the item is added to the combining queue
+  for (var i = 0; i < items.length; i++) {
+    var button = document.createElement("button");
+    button.id=items[i].item; //creates button with id of item to be combined
+    button.innerHTML = (items[i].item).concat(" x".concat(items[i].amount));
+    // 2. Append somewhere
+    var body = document.getElementsByTagName("items")[0];
+    body.appendChild(button);
+    // 3. Add event handler
+    button.addEventListener('click', function(){
+    addToCombine(this.id);
+    });
+  }
+  //combines el1 and el2 to create a new item
+  function combineItems(){
+    //1. get id in js 2.pass value to php 3. update
   }
 
 </script>
