@@ -139,9 +139,8 @@ body{
   var t=setInterval(updateEnergy,1000);
   function updateEnergy(){
   	loadP("energies","energy");
-
-
   }
+
   //code to load items
   var items = null;
   function refreshItems(){
@@ -158,7 +157,7 @@ body{
   var el1, el2;
   var nextEl = "el1"; //stores the last el updated
 
-  function addToCombine(id) { //LIFO using el1 and el2 to store combination of elemnt
+  function addToCombine(id) { //FIFO using el1 and el2 to store combination of elemnt
     if(nextEl=="el1"){
       el1=id;
       nextEl="el2";
