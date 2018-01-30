@@ -58,6 +58,9 @@ body{
   height:50px;
   grid-column: 1 / 4;
 }
+#combine{
+	display:none;
+}
 
 /* hide side menus on phones */
 @media screen and (max-width: 480px) {
@@ -94,15 +97,18 @@ body{
     <div id="confirmMessage"></div>
 
     <div id="itemList"></div>
-    <items></items>
+    <items id="items"></items>
     <div id="testItems"></div>
-    <button onclick="combineItems()">Combine items</button>
+    <button id="combine" onclick="combineItems()">Combine items</button>
+		<!-- ghost div needs to be put the last thing -->
+		<div id="ghost"></div>
+
   </div>
   <div class="item4">analytics menu</div>
   <div class="item5">
     <a onclick="logout()">logout</a>
 
-    <div id="ghost"></div>
+
   </div>
 </div>
 
@@ -112,6 +118,7 @@ body{
 <!-- ajax script is called in headers to be before the actual ajax use -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<div id="itemScript"></div>
 <script type="text/javascript">
 	function doneAllocation() {
 		document.getElementById("submit").style.display = "block";
@@ -139,22 +146,19 @@ body{
   var t=setInterval(updateEnergy,1000);
   function updateEnergy(){
   	loadP("energies","energy");
+		
   }
 
   //code to load items
   var items = null;
   function refreshItems(){
-    <?php
-    databaseConnect();
-    $result = sqlSelect('usersItems','item,amount',"username='test'",'item');
-    ?>
+		loadV("itemScript","itemList","test")
     //store items in var items
-    items = <?php echo json_encode($result, JSON_PRETTY_PRINT) ?>;
   }
   refreshItems();
 
   //vars that stores the elements to combine
-  var el1, el2;
+  var el1, el2 = null;
   var nextEl = "el1"; //stores the last el updated
 
   function addToCombine(id) { //FIFO using el1 and el2 to store combination of elemnt
@@ -166,26 +170,22 @@ body{
       el2=id;
       nextEl="el1";
     }
+		var combine = document.getElementById('combine');
+		combine.style.display = 'none';
+		if(el2!=null){
+			combine.style.display = 'block';
+		}
     //displays the two elements that will be combined
     document.getElementById("testItems").innerHTML = el1.concat(" will be combined with ").concat(el2);
   }
 
-  //creates a button for each item so when they are clicked the item is added to the combining queue
-  for (var i = 0; i < items.length; i++) {
-    var button = document.createElement("button");
-    button.id=items[i].item; //creates button with id of item to be combined
-    button.innerHTML = (items[i].item).concat(" x".concat(items[i].amount));
-    // 2. Append somewhere
-    var body = document.getElementsByTagName("items")[0];
-    body.appendChild(button);
-    // 3. Add event handler
-    button.addEventListener('click', function(){
-    addToCombine(this.id);
-    });
-  }
+
+
   //combines el1 and el2 to create a new item
   function combineItems(){
-    //1. get id in js 2.pass value to php 3. update
+    loadP("ghost","combineItems",el1,el2);
+
+		//issues as loadP takes to much to load and so refresh items refreshes before loadP has finished working
   }
 
 </script>

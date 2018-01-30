@@ -1,5 +1,5 @@
 <?php
-
+//displays the items the user have
 databaseConnect();
 $result = sqlSelect('usersItems','item,amount',"username='test'",'item');
 
