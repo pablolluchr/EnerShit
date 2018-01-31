@@ -21,14 +21,14 @@ if (!$resourceAlloc) {
 <style>
 .grid-container {
   display: grid;
-  grid-template-columns: 200px 1fr 100px 1fr 200px;
+  grid-template-columns: 200px auto 200px;
   height:100%;
   width: 100%;
   background-image: url(modules/images/mountain_dark.svg);
   background-repeat: no-repeat;
   background-size: 200% 300%;
   background-position: calc(50% + 50px) 44%;
-  grid-template-rows: 100px  1fr  50px;
+  grid-template-rows: auto  1fr  auto;
 
 }
 body{
@@ -39,57 +39,30 @@ body{
 
   text-align: center;
   border-style: solid;
+  border-width: 1px;
   font-size: 30px;
 }
 .item1{
-	border-width: 0px;
-  grid-area: 1 / 1 / 2 / 6;
-	/* row column row colum */
-}
-.notification_box{
-	border-width: 4px;
-	border-radius:10px;
-	background-color: rgba(255, 255, 255, 0.6);
-	display:inline-block;
-	height:calc(82vh - 100px);
-	width:80%;
-}
-
-
-.userLevel{
-	grid-area: 1 / 3 / 2 / 4;
-	border-width: 4px;
-	border-radius:100%;
-	background:url("modules/images/level.png") center no-repeat;
-	background-size: 100% 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  grid-column: 1 / 4;
 }
 .item2{
-	border-width: 0px;
-	grid-area: 2 / 1 / 3 / 2;
-  background-color: rgba(0, 0, 0, 0);
-  justify-self: center;
-}
-.item3{
-	border-width: 0px;
-	grid-area: 2 / 2 / 3 / 5;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 .item4{
-	border-width: 0px;
-	grid-area: 2 / 5 / 3 / 6;
-  background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .item5{
-	border-width: 0px;
-	grid-area: 3 / 1 / 4 / 6;
-  background-color: rgba(0, 0, 0, 0.8);
-
+    background-color: rgba(0, 0, 0, 0.8);
+  height:50px;
+  grid-column: 1 / 4;
 }
 #combine{
 	display:none;
 }
 #ghost{
-	display:none
+	display:none;
 }
 
 /* hide side menus on phones */
@@ -109,12 +82,8 @@ body{
 <body>
 
 <div class="grid-container">
-  <div class="item1"></div>
-	<div class="userLevel"></div>
-  <div class="item2">
-		<div> notifications </div>
-		<div class="notification_box"></div>
-	</div>
+  <div class="item1">header</div>
+  <div class="item2">notification menu</div>
   <div class="item3">
     <table>
     	<div id="energies">
@@ -136,11 +105,7 @@ body{
     <button id="combine" onclick="combineItems()">Combine items</button>
 		<div id="errorItems"></div>
   </div>
-  <div class="item4">
-		<div>analytics</div>
-		<div class="notification_box"></div>
-	</div>
-
+  <div class="item4">analytics menu</div>
   <div class="item5">
     <a onclick="logout()">logout</a>
 		<div id="ghost"></div>
