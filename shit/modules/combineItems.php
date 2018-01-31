@@ -12,9 +12,7 @@ databaseConnect();
 
 //get amount of el1
 $el1Result = sqlSelect('usersItems','amount',"username='test' and item = '".$el1."' and Level =".$level1,"amount");
-
 $el2Result = sqlSelect('usersItems','amount',"username='test' and item = '".$el2."' and Level =".$level2,"amount");
-
 //this accounts for the case in which you are trying to combine one item with itself but you only have 1
 if($el1==$el2&$level1==$level2&$el1Result[0]['amount']==1){
   echo("you dont have enough items!");
@@ -26,25 +24,18 @@ if($el1Result[0]['amount']<1 or $el2Result[0]['amount']<1){
 }
 $el1Amount = $el1Result[0]['amount']-1;
 sqlUpdate("usersItems", "username='test' and item = '".$el1."' and Level=".$level1,'amount', $el1Amount);
+$el2Result = sqlSelect('usersItems','amount',"username='test' and item = '".$el2."' and Level =".$level2,"amount"); //updates el2Result in case el1=el2
+
+
+
 //-1 from el2
 $el2Amount = $el2Result[0]['amount']-1;
 sqlUpdate("usersItems", "username='test' and item = '".$el2."' and Level=".$level2,'amount', $el2Amount);
 echo("<script>refreshItems();</script>");
-
-
+echo($el2amount);
 $cols = 'human, attack, power, intelligence, building';
 $el1Energies  = sqlSelect('items',$cols,"name = '".$el1."'","name")[0];
 $el2Energies  = sqlSelect('items',$cols,"name = '".$el2."'","name")[0];
-print_r($el2Energies);
-//multiplies by level to get energy levels
-foreach($el1Energies as &$value){
-  $value=$value*$level1;
-}
-foreach($el2Energies as &$value){
-  $value=$value*$level2;
-}
-
-// calculate new energy values asuming element is right (if not get it from name)
 
 
 //in shit, energy values are separated by @
@@ -52,12 +43,18 @@ if(substr( $el1, 0, 5 ) === "shit@"){
   $energies = explode("@", $el1);
   $el1Energies=array('human'=>$energies[1],'attack'=>$energies[2],'power'=>$energies[3],'intelligence'=>$energies[4],'building'=>$energies[5]);
 }
-if(substr( $el2, 0, 4 ) === "shit@"){
+if(substr( $el2, 0, 5 ) === "shit@"){
   $energies = explode("@", $el2);
   $el2Energies=array('human'=>$energies[1],'attack'=>$energies[2],'power'=>$energies[3],'intelligence'=>$energies[4],'building'=>$energies[5]);
 }
-// print_r($el1Energies);
 
+//multiplies by level to get energy levels
+foreach($el1Energies as &$value){
+  $value=$value*$level1;
+}
+foreach($el2Energies as &$value){
+  $value=$value*$level2;
+}
 
 $sumEnergies = array($el1Energies['human']+$el2Energies['human'],$el1Energies['attack']+$el2Energies['attack'],
             $el1Energies['power']+$el2Energies['power'],$el1Energies['intelligence']+$el2Energies['intelligence'],

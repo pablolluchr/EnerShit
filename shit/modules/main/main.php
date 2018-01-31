@@ -61,6 +61,9 @@ body{
 #combine{
 	display:none;
 }
+#ghost{
+	display:none;
+}
 
 /* hide side menus on phones */
 @media screen and (max-width: 480px) {
@@ -105,12 +108,12 @@ body{
   <div class="item4">analytics menu</div>
   <div class="item5">
     <a onclick="logout()">logout</a>
-
+		<div id="ghost"></div>
 
   </div>
 </div>
-<!-- ghost div needs to be put the last thing -->
-<div id="ghost"></div>
+
+
 
 </body>
 </html>
