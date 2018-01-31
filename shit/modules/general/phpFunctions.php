@@ -12,19 +12,21 @@ function loadV() {
 
 		case 'itemList':
 		$username = $a[1];
-		$result = sqlSelect('usersItems','item,amount',"username='$username'",'item');
+		$result = sqlSelect('usersItems','item,amount,Level',"username='$username'",'item');
 
 		//IT NEEDS TO ACCOUNT FOR WHEN ITEMS HAVENT BEEN SELECTED
 		echo("
-
 		<script> var items = ".json_encode($result, JSON_PRETTY_PRINT).";
+		console.log(items);
 		//creates a button for each item so when they are clicked the item is added to the combining queue
 		document.getElementById('items').innerHTML = '';
+
 		for (var i = 0; i < items.length; i++) {
-			if(items[i].amount!=0){
-		    var button = document.createElement(\"button\");
-		    button.id=items[i].item; //creates button with id of item to be combined
-		    button.innerHTML = (items[i].item).concat(\" x\".concat(items[i].amount));
+			if(items[i].amount>0){
+		    var button = document.createElement('button');
+		    button.id=items[i].item.concat('*',items[i].Level); //* separates id and level
+				console.log(items[i].item);
+		    button.innerHTML = (items[i].item).concat('_',items[i].Level,' x'.concat(items[i].amount));
 		    // 2. Append somewhere
 		    var body = document.getElementsByTagName(\"items\")[0];
 		    body.appendChild(button);
