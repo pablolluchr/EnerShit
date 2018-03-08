@@ -113,6 +113,7 @@ body{
 	<div class="userLevel"></div>
   <div class="item2">
 		<div> notifications </div>
+		<?php include('test.php') ?>
 		<div class="notification_box"></div>
 	</div>
   <div class="item3">
