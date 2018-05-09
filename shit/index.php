@@ -19,12 +19,13 @@ if (!$page) {
 	<link href='css/style.css?v=<?e(time())?>' type='text/css' rel='stylesheet' media='screen,projection' />
 	<link href='css/login.css?v=<?e(time())?>' type='text/css' rel='stylesheet' media='screen,projection' />
 	<link href='css/signup.css?v=<?e(time())?>' type='text/css' rel='stylesheet' media='screen,projection' />
-	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+	<link href='css/mainStyle.css' rel='stylesheet' />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 </head>
 <body>
 
 	<div id="main"></div>
-	
+
 
 	<script type="text/javascript">
 		loadP("main","<?e($page)?>");
