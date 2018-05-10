@@ -1,0 +1,19 @@
+include functions.php
+
+.loginParent
+    section#loginContent.loginChild.menuSolid.loginContentParent.textWhite
+        cardhead
+            h3 Login
+        error#error.loginContent <?=$error?>
+        user1.loginContent Username:
+        user2.loginContent
+            input#username.loginInput.textWhite(type='text')
+        pass1.loginContent Password:
+        pass2.loginContent
+            input#password.loginInput.textWhite(type='password')
+        signup.loginContent
+            button.loginButton.textWhite(onclick="document.location.href = '?p=signup'") Signup
+        login.loginContent
+            button#login.loginButton.textWhite(onclick='login()') Login
+
+script(src="functions.js")
